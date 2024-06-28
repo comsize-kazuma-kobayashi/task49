@@ -20,30 +20,3 @@ CREATE TABLE m_status(
 status_code CHAR(2) NOT NULL PRIMARY KEY,
 status_name VARCHAR(20) UNIQUE NOT NULL,
 update_datetime TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP);
-
-CREATE TABLE t_task(
-
-	task_id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-	
-	task_name VARCHAR(50) NOT NULL,
-	
-	category_id INT NOT NULL,
-	
-	limit_date DATE,
-	
-	user_id VARCHAR(24) NOT NULL,
-	
-	status_code CHAR(2) NOT NULL,
-	
-	memo VARCHAR(100),
-
-	create_datetime TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-	
-	update_datetime TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-	
-	FOREIGN KEY(category_id) REFERENCES m_category(category_id),
-	
-	FOREIGN KEY(user_id) REFERENCES m_user(user_id),
-
-	FOREIGN KEY(status_code) REFERENCES m_status(status_code)
-);
