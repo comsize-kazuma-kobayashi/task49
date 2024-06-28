@@ -15,3 +15,8 @@ category_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 category_name VARCHAR(20) NOT NULL UNIQUE KEY,
 update_datetime TIMESTAMP DEFAULT current_timestamp ON UPDATE current_timestamp
 );
+
+CREATE TABLE m_status(
+status_code CHAR(2) NOT NULL PRIMARY KEY,
+status_name VARCHAR(20) UNIQUE NOT NULL,
+update_datetime TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP);
