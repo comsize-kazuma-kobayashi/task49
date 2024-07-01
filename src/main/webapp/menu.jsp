@@ -16,19 +16,19 @@
 
 	<hr>
 
-	<form action="task-add-servlet" method="get">
+	<form action="TaskAddServlet" method="get">
 
 		<input type="submit" value="商品登録">
 
 	</form><br>
 	
-	<form action="task-list-servlet" method="post">
+	<form action="TaskListServlet" method="post">
 
 		<input type="submit" value="商品一覧">
 
 	</form><br>
 
-	<form action="logout-success" method="post">
+	<form action="logout-success.jsp" method="post">
 
 		<input type="submit" value="ログアウト">
 
