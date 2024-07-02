@@ -9,7 +9,7 @@
 <body>
 
 	<%
-	List<TaskDisplayBean> taskList = (List<TaskDisplayBean>) request.getAttribute("taskList");
+	List<TaskDisplayBean> taskDisplayList = (List<TaskDisplayBean>) session.getAttribute("taskDisplayList");
 	%>
 	<h1>タスク一覧表示画面</h1>
 	<hr>
@@ -24,7 +24,7 @@
 			<th>メモ</th>
 		</tr>
 		<%
-		for (TaskDisplayBean task : taskList) {
+		for (TaskDisplayBean task : taskDisplayList) {
 		%>
 		<tr>
 			<td><%=task.getTaskName()%></td>

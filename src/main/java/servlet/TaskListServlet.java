@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.dao.TaskDisplayDAO;
 import model.entity.TaskDisplayBean;
@@ -41,16 +42,17 @@ public class TaskListServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		List<TaskDisplayBean> taskList = new ArrayList<TaskDisplayBean>();
+		List<TaskDisplayBean> taskDisplayList = new ArrayList<TaskDisplayBean>();
 		TaskDisplayDAO dao = new TaskDisplayDAO();
 
 		try {
-			taskList = dao.selectDisplay();
+			taskDisplayList = dao.selectDisplay();
 		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 
-		request.setAttribute("taskList", taskList);
+		HttpSession session = request.getSession();
+		session.setAttribute("taskDisplayList", taskDisplayList);
 
 		RequestDispatcher rd = request.getRequestDispatcher("task-list.jsp");
 		rd.forward(request, response);

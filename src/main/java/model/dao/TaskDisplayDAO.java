@@ -15,9 +15,9 @@ public class TaskDisplayDAO {
 	public List<TaskDisplayBean> selectDisplay()
 			throws SQLException, ClassNotFoundException {
 
-	List<TaskDisplayBean> taskList = new ArrayList<TaskDisplayBean>();
+	List<TaskDisplayBean> taskDisplayList = new ArrayList<TaskDisplayBean>();
 	String sql 
-	= "SELECT t1.task_name, t2.category_name, t1.limit_date, t3.user_name, t4.status_name, t1.memo FROM t_task t1 LEFT OUTER JOIN m_category t2 ON t1.category_id = t2.category_id LEFT OUTER JOIN m_user t3 ON t1.user_id = t3.user_id LEFT OUTER JOIN m_status t4 ON t1.status_code = t4.status_code ORDER BY task_id;";
+	= "SELECT t1.task_id,t1.task_name, t2.category_name, t1.limit_date, t3.user_name, t4.status_name, t1.memo FROM t_task t1 LEFT OUTER JOIN m_category t2 ON t1.category_id = t2.category_id LEFT OUTER JOIN m_user t3 ON t1.user_id = t3.user_id LEFT OUTER JOIN m_status t4 ON t1.status_code = t4.status_code ORDER BY task_id;";
 	
 	try (Connection con = ConnectionManager.getConnection();
 			Statement stmt = con.createStatement();
@@ -25,6 +25,7 @@ public class TaskDisplayDAO {
 
 		// 結果の操作
 		while (res.next()) {
+			int taskId = res.getInt("task_id");
 			String taskName = res.getString("task_name");
 			String categoryName = res.getString("category_name");
 			Date limitDate = (Date) res.getDate("limit_date");
@@ -33,6 +34,7 @@ public class TaskDisplayDAO {
 			String memo = res.getString("memo");
 			
 			TaskDisplayBean task = new TaskDisplayBean();
+			task.setTaskId(taskId);
 			task.setTaskName(taskName);
 			task.setCategoryName(categoryName);
 			task.setLimitDate(limitDate);
@@ -40,10 +42,10 @@ public class TaskDisplayDAO {
 			task.setStatusName(statusName);
 			task.setMemo(memo);
 
-			taskList.add(task);
+			taskDisplayList.add(task);
 		}
 	}
-	return taskList;
+	return taskDisplayList;
 	
 	}
 	

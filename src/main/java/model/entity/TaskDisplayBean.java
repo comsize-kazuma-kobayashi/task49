@@ -4,6 +4,7 @@ import java.sql.Date;
 
 public class TaskDisplayBean {
 
+	private int taskId;
 	private String taskName;
 	private String categoryName;
 	private Date limitDate;
@@ -58,6 +59,14 @@ public class TaskDisplayBean {
 
 	public void setLimitDate(Date limitDate) {
 		this.limitDate = limitDate;
+	}
+
+	public int getTaskId() {
+		return taskId;
+	}
+
+	public void setTaskId(int taskId) {
+		this.taskId = taskId;
 	}
 	
 }
