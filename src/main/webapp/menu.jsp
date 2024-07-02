@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8" import="model.entity.UserBean"%>
 <!DOCTYPE html>
 <html>
 
@@ -11,24 +11,29 @@
 </head>
 
 <body>
-
+	<%
+	String userName = (String) session.getAttribute("userName");
+	%>
 	<h1>メニュー画面</h1>
+	<%=userName%>さんのマイページ
 
 	<hr>
 
-	<form action="task-add-servlet" method="get">
+	<form action="TaskAddServlet" method="get">
 
 		<input type="submit" value="商品登録">
 
-	</form><br>
-	
-	<form action="task-list-servlet" method="post">
+	</form>
+	<br>
+
+	<form action="TaskListServlet" method="post">
 
 		<input type="submit" value="商品一覧">
 
-	</form><br>
+	</form>
+	<br>
 
-	<form action="logout-success" method="post">
+	<form action="logout-success.jsp" method="post">
 
 		<input type="submit" value="ログアウト">
 
