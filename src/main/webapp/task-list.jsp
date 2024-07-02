@@ -38,7 +38,8 @@
 		}
 		%>
 	</table>
-
+	<table>
+	<tr>
 	<td>
 	<form action="" method="POST">
 		<input type="submit" value="編集する">
@@ -50,11 +51,13 @@
 	</form>
 	</td>
 	<br>
-	<div>
+	<td>
 		<form action="menu.jsp" method="POST">
 			<input type="submit" value="メニュー画面へ">
 		</form>
-	</div>
+	</td>
+	</tr>
+	</table>
 
 </body>
 </html>
