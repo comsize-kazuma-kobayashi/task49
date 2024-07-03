@@ -14,6 +14,10 @@ import javax.servlet.http.HttpSession;
 import model.dao.UserDAO;
 import model.entity.UserBean;
 
+/**
+ * ユーザIDとパスワードでログインを承認し、ユーザ名を返す
+ *@author 小林 
+ */
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -21,32 +25,34 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		// DAOの生成
+		//DAOをインスタンス化
 		UserDAO dao = new UserDAO();
 
-		// ユーザの情報を格納するBean
+		//ユーザ情報を格納するクラスを宣言
 		UserBean bean = null;
 
-		// 入力されたユーザIDとパスワードを取得する
+		//IDとパスワードをリクエストから取得
 		String userId = request.getParameter("user_id");
 		String password = request.getParameter("password");
+
 		try {
-			// 入力されたユーザIDとパスワードでユーザの情報を取得する
+			//ログイン承認をするメソッドにIDとパスワードを渡す
 			bean = dao.login(userId, password);
 		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 
-		String url = "";// 転送先
+		String url = "";
 
-		// ログイン認証
+		//ログインに成功すればメニュー画面へ
 		if (bean != null) {
 
-			// セッションオブジェクトを生成
+			//セッションにユーザ情報を格納
 			HttpSession session = request.getSession();
-			// セッションスコープへユーザ名を設定
-			session.setAttribute("userName", bean.getUserName());
+			session.setAttribute("userInfo", bean);
 			url = "menu.jsp";
+
+			//ログインに失敗したら失敗画面へ
 		} else {
 			url = "login-failure.jsp";
 		}

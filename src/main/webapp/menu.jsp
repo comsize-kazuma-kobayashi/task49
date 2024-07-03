@@ -12,10 +12,10 @@
 
 <body>
 	<%
-	String userName = (String) session.getAttribute("userName");
+	UserBean userInfo = (UserBean) session.getAttribute("userInfo");
 	%>
 	<h1>メニュー画面</h1>
-	<%=userName%>さんのマイページ
+	<%=userInfo.getUserName()%>さんのマイページ
 
 	<hr>
 
