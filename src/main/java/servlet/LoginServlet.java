@@ -36,7 +36,7 @@ public class LoginServlet extends HttpServlet {
 		String password = request.getParameter("password");
 
 		try {
-			//ログイン承認をするメソッドにIDとパスワードを渡す
+			//ログイン認証をするメソッドにIDとパスワードを渡す
 			bean = dao.login(userId, password);
 		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();

@@ -1,5 +1,9 @@
 package model.entity;
 
+/**
+ * ユーザ情報を格納するクラス
+ * @author 小林
+ */
 public class UserBean {
 	
 	//ユーザID
@@ -44,15 +48,18 @@ public class UserBean {
 		this.password = password;
 	}
 
-	
 	/**
 	 * フィールドuserIdの値を取得
-	 * @return ユーザネーム
+	 * @return ユーザ名
 	 */
 	public String getUserName() {
 		return userName;
 	}
 
+	/**
+	 * フィールドpasswordに値を設定
+	 * @param userName ユーザ名
+	 */
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}

@@ -7,17 +7,23 @@ import java.sql.SQLException;
 
 import model.entity.UserBean;
 
-
 /**
  * ユーザIDとパスワードを照合するクラス
  * @author 小林
  */
 public class UserDAO {
 	
-	//ログイン結果をUserBean型、またはnullで返す
+	/**
+	 * ユーザIDとパスワードを元にログイン認証しユーザ情報を返すメソッド
+	 * @param userId ユーザID
+	 * @param password パスワード
+	 * @return bean UserBean型のユーザ情報
+	 * @throws SQLException
+	 * @throws ClassNotFoundException
+	 */
 	public UserBean login(String userId, String password) throws SQLException, ClassNotFoundException {
 
-		//ユーザIDとパスワードをWHERE句検索
+		//ユーザIDとパスワードを検索するSELECT文
 		String sql = "SELECT * FROM m_user WHERE user_id = ? and password = ?;";
 
 		//ユーザ情報を格納するクラスをインスタンス化
@@ -26,7 +32,7 @@ public class UserDAO {
 		try (Connection con = ConnectionManager.getConnection();
 				PreparedStatement pstmt = con.prepareStatement(sql);) {
 
-			//SELECT文に取得したユーザIDとパスワードをセット
+			//WHERE句に取得したユーザIDとパスワードをセット
 			pstmt.setString(1, userId);
 			pstmt.setString(2, password);
 
