@@ -16,6 +16,7 @@
 
 	<table border="1">
 		<tr>
+			<th></th>
 			<th>タスク名</th>
 			<th>カテゴリ情報</th>
 			<th>期限</th>
@@ -27,6 +28,11 @@
 		for (TaskDisplayBean task : taskDisplayList) {
 		%>
 		<tr>
+			<td>
+			<form action="" method="POST">
+			<input type="radio" name="taskId" value="<%=task.getTaskId() %>">
+			</form>
+			</td>
 			<td><%=task.getTaskName()%></td>
 			<td><%=task.getCategoryName()%></td>
 			<td><%=task.getLimitDate()%></td>
