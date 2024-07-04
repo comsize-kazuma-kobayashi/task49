@@ -56,7 +56,6 @@
 		<input type="submit" value="削除する">
 	</form>
 	</td>
-	<br>
 	<td>
 		<form action="menu.jsp" method="POST">
 			<input type="submit" value="メニュー画面へ">
