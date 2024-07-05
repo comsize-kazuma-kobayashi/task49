@@ -19,7 +19,7 @@
 
 	<hr>
 
-	<form action="TaskAddServlet" method="get">
+	<form action="TaskRegServlet" method="get">
 
 		<input type="submit" value="商品登録">
 
