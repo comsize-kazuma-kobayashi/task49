@@ -48,8 +48,8 @@
 		<input type="submit" value="削除する">
 	</form>
 	<br>
-	<form action="item-detail.jsp" method="POST">
-		<input type="submit" value="詳細表示へ">
+	<form action="task-list.jsp" method="POST">
+		<input type="submit" value="一覧表示画面へ">
 	</form>
 </body>
 </html>
