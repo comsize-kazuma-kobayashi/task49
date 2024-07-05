@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.List,model.entity.TaskDisplayBean"%>
+	pageEncoding="UTF-8"
+	import="java.util.List,model.entity.TaskDisplayBean"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,9 +30,8 @@
 		%>
 		<tr>
 			<td>
-			<form action="" method="POST">
-			<input type="radio" name="taskId" value="<%=task.getTaskId() %>">
-			</form>
+				<form method="POST">
+					<input type="radio" name="taskId" value="<%=task.getTaskId()%>" required>
 			</td>
 			<td><%=task.getTaskName()%></td>
 			<td><%=task.getCategoryName()%></td>
@@ -45,23 +45,17 @@
 		%>
 	</table>
 	<table>
-	<tr>
-	<td>
-	<form action="" method="POST">
-		<input type="submit" value="編集する">
-	</form>
-	</td>
-	<td>
-	<form action="" method="POST">
-		<input type="submit" value="削除する">
-	</form>
-	</td>
-	<td>
-		<form action="menu.jsp" method="POST">
-			<input type="submit" value="メニュー画面へ">
-		</form>
-	</td>
-	</tr>
+		<tr>
+			<td><input type="submit" formaction="TaskConfirmServlet" value="編集する"></td>
+			<td><input type="submit" formaction="DeleteSelectServlet" value="削除する">
+				</form></td>
+			<br>
+			<td>
+				<form action="menu.jsp" method="POST">
+					<input type="submit" value="メニュー画面へ">
+				</form>
+			</td>
+		</tr>
 	</table>
 
 </body>

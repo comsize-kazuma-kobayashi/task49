@@ -15,7 +15,8 @@ import model.dao.TaskDeleteDAO;
 import model.entity.TaskDeleteBean;
 
 /**
- * Servlet implementation class DeleteSelectServlet
+ * 削除確認表示を行うコントロールクラス
+ * @author 江村
  */
 @WebServlet("/DeleteSelectServlet")
 public class DeleteSelectServlet extends HttpServlet {
@@ -24,17 +25,20 @@ public class DeleteSelectServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
+		//リクエストのエンコーディング方式を指定
 		request.setCharacterEncoding("UTF-8");
 
+		//タスク削除機能のDAOクラスTaskDeleteDAOをインスタンス化
 		TaskDeleteDAO dao = new TaskDeleteDAO();
+		
+		//タスクを削除するための情報を保持するクラスの宣言
 		TaskDeleteBean taskDelete = null;
 
-		// 選択した商品の商品コード取得
-		
+		// 選択したタスクのタスクコードをリクエストから取得
 		int taskId = Integer.parseInt(request.getParameter("taskId"));
 
 		try {
-			taskDelete = dao.selectTask(taskId);//商品詳細取得
+			taskDelete = dao.selectTask(taskId);//タスク情報の取得
 			
 		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
@@ -42,9 +46,11 @@ public class DeleteSelectServlet extends HttpServlet {
 
 		// セッションオブジェクトの取得
 		HttpSession session = request.getSession();
-		// 商品の詳細情報をセッションに設定
+		
+		// タスク情報をセッションに設定
 		session.setAttribute("taskDelete", taskDelete);
-		// 商品確認画面に遷移
+		
+		// タスク確認画面に遷移
 		RequestDispatcher rd = request.getRequestDispatcher("task-delete-confirm.jsp");
 		rd.forward(request, response);
 	}
