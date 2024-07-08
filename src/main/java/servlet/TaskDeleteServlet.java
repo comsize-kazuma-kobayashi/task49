@@ -29,7 +29,7 @@ public class TaskDeleteServlet extends HttpServlet {
 		// リクエストのエンコーディング方式を指定
 		request.setCharacterEncoding("UTF-8");
 		
-		//タスク削除機能のDAOクラスTaskDeleteDAOをインスタンス化
+		//TaskDeleteDAOをインスタンス化
 		TaskDeleteDAO dao = new TaskDeleteDAO();
 		
 		int processingNumber = 0; //処理件数
@@ -40,11 +40,18 @@ public class TaskDeleteServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		// 処理件数をリクエストスコープに設定
-		request.setAttribute("processingNumber", processingNumber);
+		String url = "";
+		if (processingNumber > 0) {
+			
+			// 削除結果画面に遷移
+			url = "task-delete-result.jsp";
 		
-		// 削除結果画面に遷移
-		RequestDispatcher rd = request.getRequestDispatcher("task-delete-result.jsp");
+		//削除失敗画面へ遷移
+		}else{
+			url = "task-delete-failure.jsp";
+		}
+		
+		RequestDispatcher rd = request.getRequestDispatcher(url);
 		rd.forward(request, response);
 	}
 }

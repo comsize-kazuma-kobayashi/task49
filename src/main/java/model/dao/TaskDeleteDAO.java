@@ -23,7 +23,7 @@ public class TaskDeleteDAO {
 	public TaskDeleteBean selectTask(int taskId) throws SQLException, ClassNotFoundException {
 
 		//タスク情報を検索するSQL文
-		String sql = "SELECT t1.task_id,t1.task_name,t2.category_name,t1.limit_date,t4.user_name,t3.status_name, t1.memo FROM t_task t1 JOIN m_category t2 ON t1.category_id = t2.category_id JOIN m_status t3 ON t1.status_code = t3.status_code JOIN m_user t4 ON t1.user_id = t4.user_id WHERE t1.task_id = ?";
+		String sql = "SELECT t1.task_id,t1.task_name,t2.category_name,t1.limit_date,t1.user_id,t4.user_name,t3.status_name, t1.memo FROM t_task t1 JOIN m_category t2 ON t1.category_id = t2.category_id JOIN m_status t3 ON t1.status_code = t3.status_code JOIN m_user t4 ON t1.user_id = t4.user_id WHERE t1.task_id = ?";
 		
 		//タスク情報を格納するクラスをインスタンス化
 		TaskDeleteBean taskDelete = new TaskDeleteBean();
@@ -44,7 +44,8 @@ public class TaskDeleteDAO {
 				taskDelete.setTaskName(res.getString("task_name"));
 				taskDelete.setCategoryName(res.getString("category_name"));
 				taskDelete.setLimitDate(res.getDate("limit_date"));
-				taskDelete.setUserId(res.getString("user_name"));
+				taskDelete.setUserId(res.getString("user_id"));
+				taskDelete.setUserName(res.getString("user_name"));
 				taskDelete.setStatusName(res.getString("status_name"));
 				taskDelete.setMemo(res.getString("memo"));
 			}

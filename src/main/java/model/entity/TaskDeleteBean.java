@@ -20,6 +20,9 @@ public class TaskDeleteBean {
 	//期限
 	private Date limitDate;
 	
+	//ユーザーID
+	private  String userId;
+	
 	//ユーザー名
 	private String userName;
 	
@@ -28,120 +31,119 @@ public class TaskDeleteBean {
 	
 	//メモ
 	private String memo;
-	
-	
+
 	/**
-	 * フィールドtaskIdの値を返す
 	 * @return taskId
 	 */
 	public int getTaskId() {
 		return taskId;
 	}
-	
+
 	/**
-	 * フィールドtaskIdに値を設定
-	 * @param taskId
+	 * @param taskId セットする taskId
 	 */
 	public void setTaskId(int taskId) {
 		this.taskId = taskId;
 	}
-	
+
 	/**
-	 * フィールドtaskNameの値を返す
 	 * @return taskName
 	 */
 	public String getTaskName() {
 		return taskName;
 	}
-	
+
 	/**
-	 * フィールドtaskNameに値を設定
-	 * @param taskName
+	 * @param taskName セットする taskName
 	 */
 	public void setTaskName(String taskName) {
 		this.taskName = taskName;
 	}
-	
+
 	/**
-	 * フィールドCategoryNameの値を返す
 	 * @return categoryName
 	 */
 	public String getCategoryName() {
 		return categoryName;
 	}
-	
+
 	/**
-	 *  フィールドcategoryNameに値を設定
-	 * @param categoryName
+	 * @param categoryName セットする categoryName
 	 */
 	public void setCategoryName(String categoryName) {
 		this.categoryName = categoryName;
 	}
-	
+
 	/**
-	 * フィールドlimitDateの値を返す
 	 * @return limitDate
 	 */
 	public Date getLimitDate() {
 		return limitDate;
 	}
-	
+
 	/**
-	 * フィールドlimitDateに値を設定
-	 * @param limitDate
+	 * @param limitDate セットする limitDate
 	 */
 	public void setLimitDate(Date limitDate) {
 		this.limitDate = limitDate;
 	}
-	
-	
+
 	/**
-	 * フィールドuserNameの値を返す
+	 * @return userId
+	 */
+	public String getUserId() {
+		return userId;
+	}
+
+	/**
+	 * @param userId セットする userId
+	 */
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+	/**
 	 * @return userName
 	 */
 	public String getUserName() {
 		return userName;
 	}
-	
+
 	/**
-	 * フィールドuserNameに値を設定
-	 * @param userName
+	 * @param userName セットする userName
 	 */
-	public void setUserId(String userName) {
+	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-	
+
 	/**
-	 * フィールドstatusNameの値を返す
 	 * @return statusName
 	 */
 	public String getStatusName() {
 		return statusName;
 	}
-	
+
 	/**
-	 * フィールドstatusNameに値を設定
-	 * @param statusName
+	 * @param statusName セットする statusName
 	 */
 	public void setStatusName(String statusName) {
 		this.statusName = statusName;
 	}
-	
+
 	/**
-	 * フィールドmemoの値を返す
 	 * @return memo
 	 */
 	public String getMemo() {
 		return memo;
 	}
-	
+
 	/**
-	 * フィールドmemoに値を設定
-	 * @param memo
+	 * @param memo セットする memo
 	 */
 	public void setMemo(String memo) {
 		this.memo = memo;
 	}
+	
 	
 	
 }

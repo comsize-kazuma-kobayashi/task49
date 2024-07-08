@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import model.dao.TaskDeleteDAO;
 import model.entity.TaskDeleteBean;
+import model.entity.UserBean;
 
 /**
  * 削除確認表示を行うコントロールクラス
@@ -28,10 +29,10 @@ public class DeleteSelectServlet extends HttpServlet {
 		//リクエストのエンコーディング方式を指定
 		request.setCharacterEncoding("UTF-8");
 
-		//タスク削除機能のDAOクラスTaskDeleteDAOをインスタンス化
+		//TaskDeleteDAOをインスタンス化
 		TaskDeleteDAO dao = new TaskDeleteDAO();
 		
-		//タスクを削除するための情報を保持するクラスの宣言
+		//TaskDeleteBeanの宣言
 		TaskDeleteBean taskDelete = null;
 
 		// 選択したタスクのタスクコードをリクエストから取得
@@ -43,15 +44,28 @@ public class DeleteSelectServlet extends HttpServlet {
 		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}
-
+		
 		// セッションオブジェクトの取得
 		HttpSession session = request.getSession();
+		UserBean userInfo = (UserBean) session.getAttribute("userInfo");
 		
-		// タスク情報をセッションに設定
+		// taskDeleteをセッションに設定
 		session.setAttribute("taskDelete", taskDelete);
 		
-		// タスク確認画面に遷移
-		RequestDispatcher rd = request.getRequestDispatcher("task-delete-confirm.jsp");
+		String url = "";
+		
+		//ログインしたユーザーIDと選択したタスクのユーザーIDが一致したら確認画面へ遷移
+		if(userInfo.getUserId().equals(taskDelete.getUserId())) {
+			
+			// 確認画面に遷移
+			url = "task-delete-confirm.jsp";
+		
+		//削除失敗画面へ遷移
+		}else{
+			url = "task-delete-failure.jsp";
+		}
+		
+		RequestDispatcher rd = request.getRequestDispatcher(url);
 		rd.forward(request, response);
 	}
 }
