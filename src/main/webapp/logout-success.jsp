@@ -10,10 +10,10 @@
 	<h1>ログアウト画面</h1>
 	<hr>
 	<%
-	String userName = (String) session.getAttribute("userName");
+	UserBean userInfo = (UserBean) session.getAttribute("userInfo");
 	%>
 	<h4>
-		お疲れさまでした！<%=userName%>さん
+		お疲れさまでした！<%=userInfo.getUserName()%>さん
 	</h4>
 	<h1>ログアウトしました。</h1>
 	<%
