@@ -17,7 +17,8 @@ import model.entity.CategoryOptionBean;
 import model.entity.StatusOptionBean;
 
 /**
- * Servlet implementation class TaskRegOptionServlet
+ * タスク登録に必要なデータを取得し、タスク登録画面に遷移させる
+ * @author 小林
  */
 @WebServlet("/TaskRegOptionServlet")
 public class TaskRegOptionServlet extends HttpServlet {
@@ -26,13 +27,15 @@ public class TaskRegOptionServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		// DAOを生成
+		// DAOをインスタンス化
 		CreateCategoryOptionDAO optionDao = new CreateCategoryOptionDAO();
 
+		//プルダウン取得用ArrayListを宣言
 		List<CategoryOptionBean> categoryOptionList = null;
 		List<StatusOptionBean> statusOptionList = null;
 		
 		try {
+			//プルダウン取得
 			categoryOptionList = optionDao.categoryOption();
 			statusOptionList = optionDao.statusOption();
 				
@@ -43,11 +46,11 @@ public class TaskRegOptionServlet extends HttpServlet {
 		//セッション呼び出し
 		HttpSession session = request.getSession();  
 		
-		// リクエストスコープへの属性の設定
+		//セッションにプルダウン情報を格納
 		session.setAttribute("categoryOptionList", categoryOptionList);
 		session.setAttribute("statusOptionList", statusOptionList);
 		
-		// 商品登録画面への転送
+		//タスク登録画面への転送
 		RequestDispatcher rd = request.getRequestDispatcher("task-register.jsp");
 		rd.forward(request, response);
 	}
