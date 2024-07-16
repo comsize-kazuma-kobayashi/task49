@@ -38,6 +38,7 @@
 						<%
 						}
 						%>
+						
 				</select>
 			</tr>
 			<tr>
@@ -55,14 +56,14 @@
 			<tr>
 				<th>ステータス情報</th>
 				<td><select name="status_code">
-				<%
-					for (StatusOptionBean status : statusList) {
-				%>
-				<option value="<%=status.getStatusCode()%>"><%=status.getStatusName()%></option>
-				<%
-				}
-				%></select>
-
+						<%
+						for (StatusOptionBean status : statusList) {
+						%>
+						<option value="<%=status.getStatusCode()%>"><%=status.getStatusName()%></option>
+						<%
+						}
+						%>
+				</select>
 			</tr>
 
 			<tr>

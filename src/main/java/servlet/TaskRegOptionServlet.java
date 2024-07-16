@@ -29,17 +29,8 @@ public class TaskRegOptionServlet extends HttpServlet {
 		// DAOを生成
 		CreateCategoryOptionDAO optionDao = new CreateCategoryOptionDAO();
 
-		// Pulldownに格納する情報を格納するBean
-		//		TaskRegBean regPulldown = null;
-
-		//		int categoryId = Integer.parseInt(request.getParameter("category_id"));				
-		//		String categoryName = request.getParameter("category_name");
-		//		String statusCode = request.getParameter("status_code");
-		//		String statusName = request.getParameter("status_name");
-
 		List<CategoryOptionBean> categoryOptionList = null;
 		List<StatusOptionBean> statusOptionList = null;
-		
 		
 		try {
 			categoryOptionList = optionDao.categoryOption();
