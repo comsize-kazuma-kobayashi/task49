@@ -42,7 +42,7 @@ ItemCategoryBean alterItem = (ItemCategoryBean) request.getAttribute("alterItem"
 	</table>
 	<br> <input type="submit" value="変更する"> <input
 		type="hidden" name="category_code"
-		value="<%=alterItem.getCategoryCode()%>">
+		value="<%=alterItem.getCategoryId()%>">
 </form>
 <br>
 <form action="item-alter-form.jsp" method="POST">

@@ -30,7 +30,7 @@
 						for (CategoryBean category : categoryList) {
 						%>
 						<option
-							value="<%=category.getCategoryCode()%>,<%=category.getCategoryName()%>"><%=category.getCategoryName()%></option>
+							value="<%=category.getCategoryId()%>,<%=category.getCategoryName()%>"><%=category.getCategoryName()%></option>
 						<%
 						}
 						%>
