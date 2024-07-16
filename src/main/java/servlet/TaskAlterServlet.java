@@ -1,7 +1,9 @@
 package servlet;
 
 import java.io.IOException;
+import java.sql.Date;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,13 +13,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.dao.ItemCategoryDAO;
-import model.entity.ItemCategoryBean;
+import model.dao.TaskAlterDAO;
+import model.entity.TaskAlterBean;
 
 /**
+ * 編集結果表示を行うコントロールクラス
+ * @author 青木雪絵
  * Servlet implementation class ItemAlterServlet
  */
-@WebServlet("/ItemAlterServlet")
+@WebServlet("/TaskAlterServlet")
 public class TaskAlterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -31,32 +35,59 @@ public class TaskAlterServlet extends HttpServlet {
 		// セッションオブジェクトの取得
 		HttpSession session = request.getSession();
 		// 使用するクラスのインスタンス化
-		ItemCategoryDAO dao = new ItemCategoryDAO();
-		ItemCategoryBean alterItem = new ItemCategoryBean();
+		TaskAlterDAO dao = new TaskAlterDAO();
+		TaskAlterBean updateTask = new TaskAlterBean();
 
 		int processingNumber = 0; //処理件数
 
-		// 変更情報をbeanにセット
-		alterItem.setItemCode(Integer.parseInt(request.getParameter("item_code")));
-		alterItem.setItemName(request.getParameter("item_name"));
-		alterItem.setCategoryName(request.getParameter("category_name"));
-		alterItem.setCategoryCode(Integer.parseInt(request.getParameter("category_code")));
-		alterItem.setPrice(Integer.parseInt(request.getParameter("price")));
+		String url = "";
 
+		String str = request.getParameter("limit_date");
+		SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-DD");
+		Date date = null;
+		date = java.sql.Date.valueOf(str);
+
+		Object obj = session.getAttribute("userId");
+
+		String strg = obj.toString();
+
+		// 編集情報をbeanにセット
+		updateTask.setTaskName(request.getParameter("task_name"));
+		updateTask.setCategoryId((Integer) session.getAttribute("categoryId"));
+		updateTask.setCategoryName(request.getParameter("category_name"));
+		updateTask.setLimitDate(date);
+		updateTask.setUserId(strg);
+		updateTask.setUserName(request.getParameter("user_name"));
+		updateTask.setStatusCode((String) session.getAttribute("status_code"));
+		updateTask.setStatusName(request.getParameter("status_name"));
+		updateTask.setMemo(request.getParameter("memo"));
+		updateTask.setTaskId(Integer.parseInt(request.getParameter("task_id")));
+
+		
 		try {
-			processingNumber = dao.updateItem(alterItem);//変更処理
+			processingNumber = dao.updateTask(updateTask);//編集処理
 
 		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}
-		// 変更情報をリクエストスコープに設定
-		request.setAttribute("alterItem", alterItem);
+
+		if (processingNumber > 0) {
+
+			//編集結果画面に遷移
+			url = "task-alter-result.jsp";
+
+			//編集失敗画面へ遷移
+		} else {
+			url = "update-failure.jsp";
+		}
+
+		// 編集情報をリクエストスコープに設定
+		request.setAttribute("updateTask", updateTask);
+
 		// 処理件数をリクエストスコープに設定
 		request.setAttribute("processingNumber", processingNumber);
-		// セッション情報を削除
-		session.removeAttribute("itemDetail");
-		// 変更結果画面に遷移
-		RequestDispatcher rd = request.getRequestDispatcher("item-alter-result.jsp");
+		// 編集結果画面に遷移
+		RequestDispatcher rd = request.getRequestDispatcher(url);
 		rd.forward(request, response);
 	}
 }

@@ -1,54 +1,67 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" import="model.entity.ItemCategoryBean"%>
+	pageEncoding="UTF-8" import="model.entity.TaskAlterBean"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>商品情報-変更確認画面</title>
+<title>タスク情報-編集確認画面</title>
 </head>
 <%
-ItemCategoryBean itemDetail = (ItemCategoryBean) session.getAttribute("itemDetail");
-ItemCategoryBean alterItem = (ItemCategoryBean) request.getAttribute("alterItem");
+int taskId = (Integer)session.getAttribute("taskId");
+TaskAlterBean taskAlter = (TaskAlterBean) request.getAttribute("taskAlter");
+
 %>
 
-<h1>商品情報-変更確認画面</h1>
+<h1>タスク管理情報-タスク確認画面</h1>
 <hr>
 
-<h2>商品情報を以下の内容に変更します。よろしいですか？</h2>
+<h2>タスク管理情報を以下の内容に変更します。よろしいですか？</h2>
 <br>
 <br>
-<form action="ItemAlterServlet" method="POST">
+<form action="TaskAlterServlet" method="POST">
 	<table border="1">
 		<tr>
-			<th>商品コード</th>
-			<td><%=itemDetail.getItemCode()%><input type="hidden"
-				name="item_code" value="<%=itemDetail.getItemCode()%>"></td>
+			<th>タスク名</th>
+			<td><%=taskAlter.getTaskName()%><input type="hidden"
+				name="task_name" value="<%=taskAlter.getTaskName()%>"></td>
 		</tr>
 		<tr>
-			<th>商品分類</th>
-			<td><%=alterItem.getCategoryName()%><input type="hidden"
-				name="category_name" value="<%=alterItem.getCategoryName()%>"></td>
+			<th>カテゴリー情報</th>
+			<td><%=taskAlter.getCategoryName()%><input type="hidden"
+				name="category_name" value="<%=taskAlter.getCategoryName()%>"></td>
 		</tr>
 		<tr>
-			<th>商品名</th>
-			<td><%=alterItem.getItemName()%><input type="hidden"
-				name="item_name" value="<%=alterItem.getItemName()%>"></td>
+			<th>期限</th>
+			<td><%=taskAlter.getLimitDate()%><input type="hidden"
+				name="limit_date" value="<%=taskAlter.getLimitDate()%>"></td>
 		</tr>
 		<tr>
-			<th>価格</th>
-			<td><%=alterItem.getPrice()%>円<input type="hidden" name="price"
-				value="<%=alterItem.getPrice()%>"></td>
+			<th>担当者情報</th>
+			<td><%=taskAlter.getUserName()%><input type="hidden"
+				name="user_name" value="<%=taskAlter.getUserName()%>"></td>
 		</tr>
+		<tr>
+			<th>ステータス情報</th>
+			<td><%=taskAlter.getStatusName()%><input type="hidden"
+				name="status_name" value="<%=taskAlter.getStatusName()%>"></td>
+		</tr>
+		<tr>
+			<th>メモ</th>
+			<td><%=taskAlter.getMemo()%><input type="hidden"
+				name="memo" value="<%=taskAlter.getMemo()%>"></td>
+		</tr>
+		
 	</table>
-	<br> <input type="submit" value="変更する"> <input
-		type="hidden" name="category_code"
-		value="<%=alterItem.getCategoryId()%>">
+	<br> <input type="submit" value="編集する"> <input
+		type="hidden" name="task_id"
+		value="<%=taskId%>">
 </form>
 <br>
-<form action="item-alter-form.jsp" method="POST">
-	<input type="hidden" name="item_code"
-		value="<%=itemDetail.getItemCode()%>"> <input type="submit"
-		value="変更入力フォームへ">
+<form action="menu.jsp" method="POST">
+	<input type="hidden" name="task_id"
+		value="<%=taskId%>"> <input type="submit"
+		value="メニュー画面
+		へ">
 </form>
 </body>
 </html>

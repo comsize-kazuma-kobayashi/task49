@@ -5,16 +5,17 @@ package model.entity;
  * @author 小林
  */
 public class UserBean {
-
+	
 	//ユーザID
 	private String userId;
-
+	
 	//パスワード
 	private String password;
-
+	
 	//ユーザネーム
 	private String userName;
 
+	
 	/**
 	 * フィールドuserIdの値を返す
 	 * @return ユーザID
@@ -22,7 +23,7 @@ public class UserBean {
 	public String getUserId() {
 		return userId;
 	}
-
+	
 	/**
 	 * フィールドuserIdに値を設定
 	 * @param userId ユーザID

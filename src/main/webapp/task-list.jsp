@@ -46,7 +46,7 @@
 	</table>
 	<table>
 		<tr>
-			<td><input type="submit" formaction="TaskConfirmServlet" value="編集する"></td>
+			<td><input type="submit" formaction="TaskAlterFormServlet" value="編集する"></td>
 			<td><input type="submit" formaction="DeleteSelectServlet" value="削除する">
 				</form></td>
 			<br>
