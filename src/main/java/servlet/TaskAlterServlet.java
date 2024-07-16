@@ -58,7 +58,7 @@ public class TaskAlterServlet extends HttpServlet {
 		updateTask.setLimitDate(date);
 		updateTask.setUserId(strg);
 		updateTask.setUserName(request.getParameter("user_name"));
-		updateTask.setStatusCode((String) session.getAttribute("status_code"));
+		updateTask.setStatusCode(session.getAttribute("statusCode").toString());
 		updateTask.setStatusName(request.getParameter("status_name"));
 		updateTask.setMemo(request.getParameter("memo"));
 		updateTask.setTaskId(Integer.parseInt(request.getParameter("task_id")));
