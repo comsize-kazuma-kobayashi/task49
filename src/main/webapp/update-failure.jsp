@@ -13,7 +13,7 @@
 	TaskAlterBean taskResult = (TaskAlterBean) request.getAttribute("updateTask");
 	%>
 
-	<h2>データを更新できませんでした。</h2>
+	<h2>データを編集できませんでした。</h2>
 	<br>
 	<br>
 	<table border="1">

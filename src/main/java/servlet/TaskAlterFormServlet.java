@@ -62,7 +62,7 @@ public class TaskAlterFormServlet extends HttpServlet {
 		// 選択されたタスク情報をセッションに設定
 		session.setAttribute("taskId", taskId);
 
-		// タスク情報をセッションに設定
+		// タスク情報をリクエストに設定
 		request.setAttribute("categoryList", categoryList);
 		request.setAttribute("statusList", statusList);
 		request.setAttribute("userList", userList);

@@ -54,7 +54,7 @@ public class TaskConfirmServlet extends HttpServlet {
 	
 
 		int categoryId = Integer.parseInt(selectCategory[0]);
-		String statusCode = (selectStatus[0]);
+		String statusCode = selectStatus[0];
 		String userId = selectUser[0];
 
 		// リクエストスコープにbeanの情報を設定

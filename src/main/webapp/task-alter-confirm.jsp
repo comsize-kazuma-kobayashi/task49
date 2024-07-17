@@ -60,8 +60,7 @@ TaskAlterBean taskAlter = (TaskAlterBean) request.getAttribute("taskAlter");
 <form action="menu.jsp" method="POST">
 	<input type="hidden" name="task_id"
 		value="<%=taskId%>"> <input type="submit"
-		value="メニュー画面
-		へ">
+		value="メニュー画面へ">
 </form>
 </body>
 </html>
