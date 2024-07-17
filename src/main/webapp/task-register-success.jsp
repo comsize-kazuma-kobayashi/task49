@@ -27,18 +27,13 @@
 		</tr>
 		<tr>
 			<th>カテゴリ名</th>
-
 			<%
 			for (int i = 0; i < categoryList.size(); i++) {
-			%>
-			<%
 			if (categoryList.get(i).getCategoryId() == taskInfo.getCategoryid()) {
 			%>
 			<td><%=categoryList.get(i).getCategoryName()%></td>
 			<%
 			}
-			%>
-			<%
 			}
 			%>
 		</tr>
@@ -52,31 +47,22 @@
 		</tr>
 		<tr>
 			<th>ステータス名</th>
-
 			<%
 			for (int i = 0; i < statusList.size(); i++) {
-			%>
-			<%
 			if (statusList.get(i).getStatusCode().equals(taskInfo.getStatusCode())) {
 			%>
 			<td><%=statusList.get(i).getStatusName()%></td>
 			<%
 			}
-			%>
-			<%
 			}
 			%>
 		</tr>
 		<tr>
 			<th>メモ</th>
-
-
 			<td><%=taskInfo.getMemo()%></td>
-
 		</tr>
 	</table>
-
-
+	<br>
 	<form action="TaskListServlet" method="POST">
 		<input type="submit" value="一覧表示画面へ">
 	</form>
