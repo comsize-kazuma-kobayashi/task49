@@ -56,7 +56,6 @@ public class TaskAlterFormServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 
 		TaskAlterBean updateTask = new TaskAlterBean();
-		TaskAlterBean taskAlter = new TaskAlterBean();
 		UserBean userInfo = (UserBean) session.getAttribute("userInfo");
 
 		// 選択されたタスク情報をセッションに設定
@@ -70,7 +69,7 @@ public class TaskAlterFormServlet extends HttpServlet {
 
 		String url = "";
 
-		Date str = taskDetail.getLimitDate();
+		Date date = taskDetail.getLimitDate();
 
 		//ログインしたユーザーIDと選択したタスクのユーザーIDが一致したら確認画面へ遷移
 		if (userInfo.getUserId().equals(taskDetail.getUserId())) {
@@ -85,7 +84,7 @@ public class TaskAlterFormServlet extends HttpServlet {
 			updateTask.setTaskName(taskDetail.getTaskName());
 			updateTask.setCategoryId(taskDetail.getCategoryId());
 			updateTask.setCategoryName(taskDetail.getCategoryName());
-			updateTask.setLimitDate(str);
+			updateTask.setLimitDate(date);
 			updateTask.setUserId(taskDetail.getUserId());
 			updateTask.setUserName(taskDetail.getUserName());
 			updateTask.setStatusCode(taskDetail.getStatusCode());

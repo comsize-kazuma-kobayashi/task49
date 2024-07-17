@@ -40,7 +40,7 @@ public class TaskConfirmServlet extends HttpServlet {
 
 		//期限を取得
 		String str = request.getParameter("limit_date");
-		SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-DD");
+//		SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-DD");
 		Date date = null;
 		date = java.sql.Date.valueOf(str);
 

@@ -10,7 +10,6 @@
 	<h1>タスク情報-編集入力フォーム</h1>
 	<hr>
 	<%
-	TaskAlterBean taskAlterBeen = (TaskAlterBean) session.getAttribute("taskAlter");
 	TaskAlterBean taskDetail = (TaskAlterBean) request.getAttribute("taskDetail");
 	List<TaskAlterBean> categoryList = (List<TaskAlterBean>) request.getAttribute("categoryList");
 	List<TaskAlterBean> statusList = (List<TaskAlterBean>) request.getAttribute("statusList");

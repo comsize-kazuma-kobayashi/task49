@@ -3,7 +3,6 @@ package servlet;
 import java.io.IOException;
 import java.sql.Date;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -43,13 +42,11 @@ public class TaskAlterServlet extends HttpServlet {
 		String url = "";
 
 		String str = request.getParameter("limit_date");
-		SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-DD");
+		//		SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-DD");
 		Date date = null;
 		date = java.sql.Date.valueOf(str);
 
-		Object obj = session.getAttribute("userId");
-
-		String strg = obj.toString();
+		String strg = (String) session.getAttribute("userId");
 
 		// 編集情報をbeanにセット
 		updateTask.setTaskName(request.getParameter("task_name"));
@@ -63,7 +60,6 @@ public class TaskAlterServlet extends HttpServlet {
 		updateTask.setMemo(request.getParameter("memo"));
 		updateTask.setTaskId(Integer.parseInt(request.getParameter("task_id")));
 
-		
 		try {
 			processingNumber = dao.updateTask(updateTask);//編集処理
 
@@ -76,8 +72,9 @@ public class TaskAlterServlet extends HttpServlet {
 			//編集結果画面に遷移
 			url = "task-alter-result.jsp";
 
-			//編集失敗画面へ遷移
 		} else {
+			
+			//編集失敗画面へ遷移
 			url = "update-failure.jsp";
 		}
 
@@ -85,8 +82,6 @@ public class TaskAlterServlet extends HttpServlet {
 		request.setAttribute("updateTask", updateTask);
 
 		// 処理件数をリクエストスコープに設定
-		request.setAttribute("processingNumber", processingNumber);
-		// 編集結果画面に遷移
 		RequestDispatcher rd = request.getRequestDispatcher(url);
 		rd.forward(request, response);
 	}
