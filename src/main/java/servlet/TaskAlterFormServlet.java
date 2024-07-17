@@ -44,9 +44,9 @@ public class TaskAlterFormServlet extends HttpServlet {
 		TaskAlterBean taskDetail = null;
 
 		try {
-			statusList = dao.selectStatus(taskId);//プルダウン用のステータス情報取得
-			categoryList = dao.selectCategory(taskId);//プルダウン用のカテゴリー情報取得
-			userList = dao.selectUser(taskId);//プルダウン用のユーザー情報取得
+			statusList = dao.selectStatus();//プルダウン用のステータス情報取得
+			categoryList = dao.selectCategory();//プルダウン用のカテゴリー情報取得
+			userList = dao.selectUser();//プルダウン用のユーザー情報取得
 			taskDetail = dao.selectTask(taskId);//選択されたタスク情報を取得
 		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();

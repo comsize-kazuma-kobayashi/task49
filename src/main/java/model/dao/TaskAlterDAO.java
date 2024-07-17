@@ -54,12 +54,11 @@ public class TaskAlterDAO {
 
 	/**
 	 * プルダウン用のカテゴリー情報を返すメソッド
-	 * @param taskId
 	 * @return
 	 * @throws SQLException
 	 * @throws ClassNotFoundException
 	 */
-	public List<TaskAlterBean> selectCategory(int taskId) throws SQLException, ClassNotFoundException {
+	public List<TaskAlterBean> selectCategory() throws SQLException, ClassNotFoundException {
 
 		List<TaskAlterBean> categoryList = new ArrayList<TaskAlterBean>();
 		// データベースへの接続の取得、Statementの取得、SQLステートメントの実行
@@ -82,12 +81,11 @@ public class TaskAlterDAO {
 
 	/**
 	 * プルダウン用のステータス情報を返すメソッド
-	 * @param taskId
 	 * @return
 	 * @throws SQLException
 	 * @throws ClassNotFoundException
 	 */
-	public List<TaskAlterBean> selectStatus(int taskId) throws SQLException, ClassNotFoundException {
+	public List<TaskAlterBean> selectStatus() throws SQLException, ClassNotFoundException {
 
 		List<TaskAlterBean> statusList = new ArrayList<TaskAlterBean>();
 		// データベースへの接続の取得、Statementの取得、SQLステートメントの実行
@@ -110,12 +108,11 @@ public class TaskAlterDAO {
 
 	/**
 	 * プルダウン用の担当者情報を返すメソッド
-	 * @param taskId
 	 * @return
 	 * @throws SQLException
 	 * @throws ClassNotFoundException
 	 */
-	public List<TaskAlterBean> selectUser(int taskId) throws SQLException, ClassNotFoundException {
+	public List<TaskAlterBean> selectUser() throws SQLException, ClassNotFoundException {
 
 		List<TaskAlterBean> userList = new ArrayList<TaskAlterBean>();
 		// データベースへの接続の取得、Statementの取得、SQLステートメントの実行
