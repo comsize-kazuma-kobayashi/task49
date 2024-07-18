@@ -8,5 +8,13 @@
 </head>
 <body>
 	登録失敗しました。
+	
+	<form action="TaskRegOptionServlet" method="POST">
+		<input type="submit" value="タスク登録画面へ">
+	</form>
+	<br>
+	<form action="menu.jsp" method="POST">
+		<input type="submit" value="メニューへ">
+	</form>
 </body>
 </html>

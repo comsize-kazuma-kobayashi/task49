@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.dao.CreateCategoryOptionDAO;
+import model.dao.TaskRegOptionDAO;
 import model.entity.CategoryOptionBean;
 import model.entity.StatusOptionBean;
 
@@ -28,7 +28,7 @@ public class TaskRegOptionServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		// DAOをインスタンス化
-		CreateCategoryOptionDAO optionDao = new CreateCategoryOptionDAO();
+		TaskRegOptionDAO optionDao = new TaskRegOptionDAO();
 
 		//プルダウン取得用ArrayListを宣言
 		List<CategoryOptionBean> categoryOptionList = null;

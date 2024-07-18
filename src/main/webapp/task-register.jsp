@@ -68,7 +68,7 @@
 
 			<tr>
 				<th>メモ</th>
-				<td><input type=text name=memo size="30" maxlength="100"></td>
+				<td><input type=text name=memo size="30"></td>
 
 			</tr>
 

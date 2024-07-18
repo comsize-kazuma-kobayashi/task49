@@ -21,14 +21,14 @@
 
 	<form action="TaskRegOptionServlet" method="POST">
 
-		<input type="submit" value="商品登録">
+		<input type="submit" value="タスク登録">
 
 	</form>
 	<br>
 
 	<form action="TaskListServlet" method="post">
 
-		<input type="submit" value="商品一覧">
+		<input type="submit" value="タスク一覧">
 
 	</form>
 	<br>
